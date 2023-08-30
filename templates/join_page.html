@@ -1,0 +1,29 @@
+{{ define "join" }}
+
+{{ template "hider" }}
+
+
+<main class="px-3">
+  
+    
+  <h1>Вход</h1>
+  
+    
+  <form action="/join/" method="post">
+    <input type="text" name="login" id="Login" placeholder="Логин" class="form-control"><br>
+    <input type="password" name="password" id="password" placeholder="Пароль" class="form-control"><br>
+  
+    <button name="joinbtn" class="btn btn-warning">Вход</button>
+    <a href="/registration/" class="btn btn-lg btn-light fw-bold border-white bg-white">Регистрация</a>
+  
+    
+    
+
+  </form>
+
+  </main>
+
+
+{{ template "footer" }}
+
+{{ end }}

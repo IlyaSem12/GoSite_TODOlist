@@ -1,0 +1,24 @@
+{{ define "join_group" }}
+
+<!-- {{ template "hider" }} -->
+
+<main class="px-3">
+  
+
+    <h1>Вступить в группу</h1>
+  
+    
+    <form action="/join_group_in/" method="post">
+      <input type="text" name="token_group" id="token_group" placeholder="Токен группы" class="form-control"><br>
+     
+   
+      <button name="addBtn" class="btn btn-warning">Присоединиться</button>
+
+    </form>   
+   
+  </main>
+
+  
+{{ template "footer" }}
+
+{{ end }}

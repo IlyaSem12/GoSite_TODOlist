@@ -1,0 +1,49 @@
+{{ define "index" }}
+
+
+
+  
+<main class="px-3">
+  
+  {{if .Success}}
+    {{ range . }}
+      <div class="alert alert-custom" data-color="{{.Color}}">
+          <a href="/delete_task/?id={{.Id}}" class="close-btn">X</a><br>
+          <h1>{{ .Title }}</h1>
+          <p>{{ .Note }}</p>
+      </div>
+    {{ else }}
+      <h1>Главная страница</h1>
+        <p class="lead">Добро пожаловать</p>
+        <p class="lead">
+          <a href="/create/" class="btn btn-lg btn-light fw-bold border-white bg-white">Поехали!</a>
+        </p>
+    {{end}}
+  {{ else }}
+    <h1>Главная страница</h1>
+      <p class="lead">Добро пожаловать</p>
+      <p class="lead">  
+        <a href="/login/" class="btn btn-lg btn-light fw-bold border-white bg-white">Поехали!</a>
+      </p>
+  {{ end }}
+
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const alerts = document.querySelectorAll(".alert-custom");
+        alerts.forEach(alert => {
+            const color = alert.getAttribute("data-color");
+            if (color) {
+                alert.style.backgroundColor = color;
+            }
+        });
+    });
+</script>
+
+</main>
+
+
+  
+{{ template "footer" }}
+
+{{ end }}

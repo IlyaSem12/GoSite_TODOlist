@@ -1,0 +1,51 @@
+{{ define "create" }}
+
+<!-- {{ template "hider"}} -->
+
+<main class="px-3">
+  
+
+    <h1>Создание заметки</h1>
+  
+    
+    <form action="/save_article/" method="post">
+      <input type="text" name="title" id="title" placeholder="Название заметки" class="form-control"><br>
+   
+      <textarea name="note" id="note" class="form-control" placeholder="Заметка"></textarea><br>
+   
+      <label for="colorPicker" class="lead">Выберите цвет:</label>
+      <input type="color" id="colorPicker" name="colorPicker" value="#ff0000"><br>    
+      <label class="lead" for="datePicker">Срок выполнения задачи:</label>
+      <input type="date" class="form-control" id="datePicker" name="datePicker" min="" max=""><br>   
+      <label class="lead" for="groupSelect">Выберите группу:</label>
+      <select class="form-control" id="groupSelect" name="groupSelect">
+          {{ range .UserGroups }}
+              <option>{{ .GroupName }}</option>
+          {{ end }}
+      </select><br>
+
+      <button name="addBtn" class="btn btn-warning">Добавить</button>
+
+      <script>
+          
+          const datePicker = document.getElementById('datePicker'); 
+          
+          // Установка текущей даты в качестве значения "min" для ограничения выбора дат
+          const currentDate = new Date().toISOString().split('T')[0];
+          datePicker.min = currentDate;
+          
+          
+      </script>          
+      
+
+    </form>
+    
+   
+  </main>
+
+  
+{{ template "footer" }}
+
+{{ end }}
+
+ 

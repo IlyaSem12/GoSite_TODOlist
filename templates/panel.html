@@ -1,0 +1,104 @@
+{{ define "left_panel" }}
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<style>
+    body {
+        overflow-x: hidden;
+    }
+    .sidebar {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: -250px;
+        z-index: 1000;
+        padding-top: 60px;
+        transition: left 0.3s ease-in-out;
+        box-shadow: 3px 0 10px rgba(0, 0, 0, 0.1);
+        background-color: #3f4041f9; /* Светло-серый цвет панели */
+    }
+    .sidebar.active {
+        left: 0;
+    }
+    .overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 900;
+    }
+    .overlay.active {
+        display: block;
+    }
+    #toggleSidebar {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        background-color: #494a4b; /* Светло-серый цвет кнопки */
+        border: none;
+        border-radius: 50%;
+        padding: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+    }
+</style>
+
+<div class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
+    <div class="row">
+        <nav class="col-md-3 col-lg-2 d-md-block bg-light sidebar" id="sidebar">
+            <div class="position-sticky">
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">
+                            Главная
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            Страница 1
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            Страница 2
+                        </a>
+                    </li>
+                    <!-- Добавьте дополнительные пункты меню здесь -->
+                </ul>
+            </div>
+            <div class="position-sticky">
+                <button class="btn btn-secondary mt-4" id="closeSidebar">Закрыть</button>
+            </div>
+        </nav>
+
+        <main class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+            <button class="btn" id="toggleSidebar">
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+                    <path d="M2 4.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1H2.5a.5.5 0 0 1-.5-.5zM2 9.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1H2.5a.5.5 0 0 1-.5-.5zM2 14.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1H2.5a.5.5 0 0 1-.5-.5z"/>
+                </svg>
+            </button>
+            <!-- Содержимое основной части страницы -->
+        </main>
+    </div>
+</div>
+
+<div class="overlay" id="overlay"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+    document.getElementById('toggleSidebar').addEventListener('click', function() {
+        document.getElementById('sidebar').classList.add('active');
+        document.getElementById('overlay').classList.add('active');
+    });
+
+    document.getElementById('closeSidebar').addEventListener('click', function() {
+        document.getElementById('sidebar').classList.remove('active');
+        document.getElementById('overlay').classList.remove('active');
+    });
+</script>
+
+{{ end }}
